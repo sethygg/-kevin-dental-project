@@ -362,6 +362,19 @@ p { color: var(--color-text-soft); }
    ================================================= */
 .section { padding: clamp(4rem, 8vw, 7rem) 0; }
 .section-alt { background: var(--color-bg-alt); }
+
+/* Page hero (used on subpages) */
+.page-hero {
+    background: linear-gradient(180deg, #fafdfd 0%, #ffffff 100%);
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+.page-hero h1 { margin: .5rem 0 1rem; }
+.page-hero .lead { max-width: 620px; margin-left: auto; margin-right: auto; }
+
+/* Active nav state */
+.nav a.is-active { color: var(--color-primary); font-weight: 600; }
 .section-head {
     text-align: center;
     max-width: 640px;
@@ -385,26 +398,39 @@ p { color: var(--color-text-soft); }
 .dentist-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    gap: 1.5rem;
+}
+/* When dentist-grid is the only thing on a page (team.html), give it more breathing room */
+.dentist-grid-page {
+    max-width: 720px;
+    margin: 0 auto;
+    gap: 2rem;
 }
 .dentist-card {
     background: #fff;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    padding: 1.75rem 1.5rem;
+    padding: 0;
     box-shadow: var(--shadow-sm);
     transition: transform .2s ease, box-shadow .2s ease;
+    overflow: hidden;
 }
 .dentist-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .dentist-photo {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
-    border-radius: var(--radius);
-    margin-bottom: 1.25rem;
     background: var(--color-primary-light);
     display: block;
 }
+.dentist-card h3,
+.dentist-card .dentist-role,
+.dentist-card p {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+.dentist-card h3 { padding-top: 1.5rem; }
+.dentist-card p:last-child { padding-bottom: 1.75rem; }
 .dentist-card h3 { margin-bottom: .15rem; }
 .dentist-role {
     font-size: .8rem;
@@ -420,30 +446,32 @@ p { color: var(--color-text-soft); }
    ================================================= */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.25rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 2.5rem;
+    max-width: 880px;
+    margin: 0 auto;
 }
 .team-card {
     text-align: center;
-    background: #fff;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    padding: 1.25rem 1rem 1.5rem;
-    transition: transform .2s ease, box-shadow .2s ease;
+    background: transparent;
+    border: none;
+    padding: 0;
+    transition: transform .2s ease;
 }
-.team-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.team-card:hover { transform: translateY(-3px); }
 .team-photo {
-    width: 100%;
-    aspect-ratio: 4 / 5;
+    width: 180px;
+    height: 220px;
     object-fit: cover;
-    border-radius: var(--radius-sm);
-    margin-bottom: 1rem;
+    border-radius: var(--radius);
+    margin: 0 auto 1rem;
     background: var(--color-primary-light);
     display: block;
+    box-shadow: var(--shadow-sm);
 }
 .team-name {
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--color-text);
     margin-bottom: .25rem;
 }
@@ -660,7 +688,6 @@ p { color: var(--color-text-soft); }
     .value-grid { grid-template-columns: repeat(2, 1fr); }
     .testimonial-grid { grid-template-columns: 1fr; }
     .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .team-grid { grid-template-columns: repeat(3, 1fr); }
 
     .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
 }
@@ -676,7 +703,8 @@ p { color: var(--color-text-soft); }
     .service-grid { grid-template-columns: 1fr; }
     .value-grid { grid-template-columns: 1fr; }
     .dentist-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .team-photo { width: 140px; height: 175px; }
     .footer-cols { grid-template-columns: 1fr 1fr; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
 }
